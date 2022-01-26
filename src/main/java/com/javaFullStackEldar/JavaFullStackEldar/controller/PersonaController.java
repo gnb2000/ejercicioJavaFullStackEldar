@@ -43,5 +43,10 @@ public class PersonaController {
         return personasDTO;
     }
 
+    @GetMapping("/{id}")
+    public PersonaDTO findById(@PathVariable Long id){
+        return personaService.findById(id).toDTO();
+    }
+
 
 }

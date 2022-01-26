@@ -5,6 +5,7 @@ import {
   Routes
 } from "react-router-dom";
 import Home from './pages/Home';
+import EditarPersonaForm from './pages/EditarPersonaForm';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/home" element={<Home/>}/>
+          <Route path="/persona/:id" element={<EditarPersonaForm/>}/>
         </Routes>
     </Router>
   );

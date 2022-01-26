@@ -18,7 +18,7 @@ public class Persona {
     private String apellido;
     private LocalDate fechaNac;
 
-    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
     private List<Invitado> invitaciones;
 
     public Persona(){}

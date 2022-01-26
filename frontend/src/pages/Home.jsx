@@ -1,5 +1,7 @@
 import React from 'react';
-import AgregarPersona from '../componentes/agregarPersona/AgregarPersona';
+import ModalButton from '../componentes/ModalButton/ModalButton';
+import Modal from '../componentes/Modal/Modal';
+import PersonaForm from '../componentes/personaForm/PersonaForm';
 import Personas from '../componentes/personas/Personas';
 
 function Home(){
@@ -10,7 +12,8 @@ function Home(){
                 <div className="row">
                     <div className="col-6">
                         <h1>Personas</h1>
-                        <AgregarPersona/>
+                        <ModalButton styles="btn btn-success" modalName="agregarPersonaBtn" title="Agregar persona"/>
+                        <Modal modalName="agregarPersonaBtn" title="Agregar persona" component={<PersonaForm/>}/>
                         <Personas/>
                     </div>
                     <div className="col-6">
