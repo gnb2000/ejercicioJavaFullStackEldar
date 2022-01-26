@@ -3,6 +3,7 @@ package com.javaFullStackEldar.JavaFullStackEldar.model;
 import com.javaFullStackEldar.JavaFullStackEldar.dto.PersonaDTO;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
 

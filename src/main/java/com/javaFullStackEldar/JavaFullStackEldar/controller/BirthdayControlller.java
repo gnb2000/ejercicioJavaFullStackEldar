@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/birthdays")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BirthdayControlller {
 
     @Autowired
