@@ -43,4 +43,5 @@ public class PersonaServiceImpl implements PersonaService{
     public List<Persona> findAll() {
         return personaRepository.findAll();
     }
+
 }

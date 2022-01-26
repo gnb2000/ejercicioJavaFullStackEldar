@@ -15,8 +15,9 @@ public class BirthdayServiceImpl implements BirthdayService{
 
     @Override
     @Transactional
-    public void save(Birthday b) {
-        birthdayRepository.save(b);
+    public Long save(Birthday b) {
+        Birthday birthday = birthdayRepository.save(b);
+        return birthday.getId();
     }
 
     @Override
@@ -30,5 +31,11 @@ public class BirthdayServiceImpl implements BirthdayService{
     public void addInvitado(Birthday b, Invitado i) {
         b.addInvitado(i);
         birthdayRepository.save(b);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        birthdayRepository.deleteById(id);
     }
 }

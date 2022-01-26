@@ -5,7 +5,8 @@ import com.javaFullStackEldar.JavaFullStackEldar.model.Invitado;
 
 public interface BirthdayService {
 
-    void save(Birthday b);
+    Long save(Birthday b);
     Birthday findById(Long id);
     void addInvitado(Birthday b, Invitado i);
+    void delete(Long id);
 }
