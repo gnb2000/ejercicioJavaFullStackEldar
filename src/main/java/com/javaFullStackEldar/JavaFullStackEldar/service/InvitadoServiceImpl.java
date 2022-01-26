@@ -3,10 +3,12 @@ package com.javaFullStackEldar.JavaFullStackEldar.service;
 import com.javaFullStackEldar.JavaFullStackEldar.model.Invitado;
 import com.javaFullStackEldar.JavaFullStackEldar.repository.InvitadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class InvitadoServiceImpl implements InvitadoService{
 
     @Autowired

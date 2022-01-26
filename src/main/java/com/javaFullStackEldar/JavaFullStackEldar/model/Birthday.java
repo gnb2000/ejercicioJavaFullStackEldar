@@ -47,6 +47,10 @@ public class Birthday {
         this.invitados = invitados;
     }
 
+    public void addInvitado(Invitado i){
+        invitados.add(i);
+    }
+
     public BirthdayDTO toDTO(){
         return new BirthdayDTO(this.id,this.fecha);
     }
