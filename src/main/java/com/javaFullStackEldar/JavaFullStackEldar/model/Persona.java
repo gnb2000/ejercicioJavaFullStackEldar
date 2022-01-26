@@ -4,6 +4,7 @@ import com.javaFullStackEldar.JavaFullStackEldar.dto.PersonaDTO;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="personas")
@@ -15,6 +16,9 @@ public class Persona {
     private String nombre;
     private String apellido;
     private LocalDate fechaNac;
+
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Invitado> invitaciones;
 
     public Persona(){}
 
