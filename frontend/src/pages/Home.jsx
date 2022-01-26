@@ -1,10 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ModalButton from '../componentes/ModalButton/ModalButton';
 import Modal from '../componentes/Modal/Modal';
 import PersonaForm from '../componentes/personaForm/PersonaForm';
 import Personas from '../componentes/personas/Personas';
+import Invitados from '../componentes/Invitados/Invitados';
 
 function Home(){
+    const [caja,setCaja] = useState("");
+    const [contenedor,setContenedor] = useState("");
+   
+
+   useEffect(() => {
+       console.log("render");
+       setCaja(document.getElementById("caja"));
+       setContenedor(document.getElementById("contenedor"));
+
+   },[])
+   
+
+
+    function dragOver(e){
+        e.preventDefault();
+        console.log("DROP");
+    }
+
+    function drop(e){
+        console.log("drop");
+        contenedor.appendChild(caja);
+
+        
+    }
+
+ 
+
+
 
     return (
         <>
@@ -18,6 +47,14 @@ function Home(){
                     </div>
                     <div className="col-6">
                         <h1>Invitados</h1>
+
+                        
+                        {/*<div id="caja" draggable="true"></div>
+
+                        <div id="contenedor" onDragOver={dragOver} onDrop={drop}>
+                            <Invitados/>
+    </div>*/}
+                        <Invitados/>
                         
 
                     </div>
