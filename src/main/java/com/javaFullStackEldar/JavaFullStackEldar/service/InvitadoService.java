@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface InvitadoService {
 
-    void save(Invitado p);
-    void update(Invitado p);
-    void delete(Long id);
-    Invitado findById(Long id);
-    List<Invitado> findAll();
+    void save(Invitado p) throws Exception;
+    void update(Invitado p) throws Exception;
+    void delete(Long id) throws Exception;
+    Invitado findById(Long id) throws Exception;
+    List<Invitado> findAll() throws Exception;
 }

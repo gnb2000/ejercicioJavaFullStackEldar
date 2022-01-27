@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface PersonaService {
 
-    void save(Persona p);
-    void update(Persona p);
-    void delete(Long id);
-    Persona findById(Long id);
-    List<Persona> findAll();
+    void save(Persona p) throws Exception;
+    void update(Persona p) throws Exception;
+    void delete(Long id) throws Exception;
+    Persona findById(Long id) throws Exception;
+    List<Persona> findAll() throws Exception;
 
 }

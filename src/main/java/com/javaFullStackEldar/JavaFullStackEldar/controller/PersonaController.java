@@ -18,24 +18,24 @@ public class PersonaController {
     private PersonaService personaService;
 
     @PostMapping
-    public void save(@RequestBody PersonaDTO p){
+    public void save(@RequestBody PersonaDTO p) throws Exception {
         Persona persona = new Persona(p.getNombre(),p.getApellido(),p.getFechaNac());
         personaService.save(persona);
     }
 
     @PutMapping
-    public void update(@RequestBody PersonaDTO p){
+    public void update(@RequestBody PersonaDTO p) throws Exception {
         Persona persona = new Persona(p.getIdPersona(),p.getNombre(),p.getApellido(),p.getFechaNac());
         personaService.save(persona);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) throws Exception {
         personaService.delete(id);
     }
 
     @GetMapping
-    public List<PersonaDTO> getAll(){
+    public List<PersonaDTO> getAll() throws Exception {
         List<Persona> personas = personaService.findAll();
         List<PersonaDTO> personasDTO = new ArrayList<>();
         for (Persona p : personas)
@@ -44,7 +44,7 @@ public class PersonaController {
     }
 
     @GetMapping("/{id}")
-    public PersonaDTO findById(@PathVariable Long id){
+    public PersonaDTO findById(@PathVariable Long id) throws Exception {
         return personaService.findById(id).toDTO();
     }
 

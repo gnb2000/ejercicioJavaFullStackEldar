@@ -5,8 +5,8 @@ import com.javaFullStackEldar.JavaFullStackEldar.model.Invitado;
 
 public interface BirthdayService {
 
-    Long save(Birthday b);
-    Birthday findById(Long id);
-    void addInvitado(Birthday b, Invitado i);
-    void delete(Long id);
+    Long save(Birthday b) throws Exception;
+    Birthday findById(Long id) throws Exception;
+    void addInvitado(Birthday b, Invitado i) throws Exception;
+    void delete(Long id) throws Exception;
 }

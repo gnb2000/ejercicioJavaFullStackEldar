@@ -24,12 +24,12 @@ public class BirthdayControlller {
     private PersonaService personaService;
 
     @PostMapping
-    public Long save(@RequestBody BirthdayDTO b){
+    public Long save(@RequestBody BirthdayDTO b) throws Exception {
         return birthdayService.save(new Birthday(b.getFecha()));
     }
 
     @PutMapping
-    public void addInvitado(@RequestBody InvitadoDTO i){
+    public void addInvitado(@RequestBody InvitadoDTO i) throws Exception {
         Birthday b = birthdayService.findById(i.getIdBirthday());
         Persona p = personaService.findById(i.getIdPersona());
         Invitado invitado = new Invitado(b,p);
@@ -37,7 +37,7 @@ public class BirthdayControlller {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) throws Exception {
         birthdayService.delete(id);
     }
 }

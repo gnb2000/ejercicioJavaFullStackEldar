@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -17,31 +18,47 @@ public class InvitadoServiceImpl implements InvitadoService{
 
     @Override
     @Transactional
-    public void save(Invitado p) {
-        invitadoRepository.save(p);
+    public void save(Invitado p) throws Exception {
+        Invitado i = invitadoRepository.save(p);
+        if (i == null){
+            throw new Exception("Hubo un problema al guardar al invitado "+p.getId());
+        }
     }
 
     @Override
     @Transactional
-    public void update(Invitado p) {
-        invitadoRepository.save(p);
+    public void update(Invitado p) throws Exception {
+        Invitado i = invitadoRepository.save(p);
+        if (i == null){
+            throw new Exception("Hubo un problema al guardar al invitado "+p.getId());
+        }
     }
 
     @Override
     @Transactional
-    public void delete(Long id) {
-        invitadoRepository.deleteById(id);
+    public void delete(Long id) throws Exception {
+        try {
+            invitadoRepository.deleteById(id);
+        } catch (EntityNotFoundException e){
+            throw new Exception("Hubo un problema al borrar el invitado "+id);
+        }
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Invitado findById(Long id) {
-        return invitadoRepository.findById(id).orElse(null);
+    public Invitado findById(Long id) throws Exception {
+        return invitadoRepository.findById(id).orElseThrow(() -> new Exception("No existe un invitado con id "+id));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Invitado> findAll() {
-        return invitadoRepository.findAll();
+    public List<Invitado> findAll() throws Exception {
+
+        List<Invitado> i = invitadoRepository.findAll();
+        if (i == null){
+            throw new Exception("Hubo un problema al traer a todos los invitados");
+        } else {
+            return i;
+        }
     }
 }
