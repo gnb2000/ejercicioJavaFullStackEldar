@@ -4,6 +4,7 @@ Requirements
   - MySQL
   - Maven
   - Spring Boot
+  - React
   
   
 Features:
