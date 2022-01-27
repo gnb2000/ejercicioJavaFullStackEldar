@@ -4,7 +4,6 @@ import Modal from '../componentes/Modal/Modal';
 import PersonaForm from '../componentes/personaForm/PersonaForm';
 import axios from 'axios';
 
-
 function Home(){
 
     const [personas,setPersonas] = useState([]);
@@ -14,6 +13,18 @@ function Home(){
     useEffect(() => {
         loadPersonas();
     },[])
+
+    useEffect(async () => {
+        invitados.map(async invitado => {
+            var json = {
+                idPersona:invitado.idPersona,
+                idBirthday:birthday
+            }
+           await axios.put("http://localhost:8080/birthdays",json,{headers:{"Content-Type" : "application/json"}});
+        })
+        setInvitados([]);
+        loadPersonas();
+    },[birthday])
 
     function handleDelete(id){
         axios.delete("http://localhost:8080/personas/"+id)
@@ -33,10 +44,8 @@ function Home(){
                 const json = {
                     fecha:new Date()
                 }
-                console.log(json);
                 const birthday = await axios.post("http://localhost:8080/birthdays",json,{headers:{"Content-Type" : "application/json"}});
                 setBirthday(birthday.data);
-
             } catch(err){
                 console.error(err);
             }
@@ -44,19 +53,7 @@ function Home(){
         crearBirthday();
     }
 
-    useEffect(async () => {
-        invitados.map(async invitado => {
-            var json = {
-                idPersona:invitado.idPersona,
-                idBirthday:birthday
-            }
-           await axios.put("http://localhost:8080/birthdays",json,{headers:{"Content-Type" : "application/json"}});
-        })
-        setInvitados([]);
-        loadPersonas();
-
-    },[birthday])
-
+    
     async function loadPersonas(){
         const personasAPI = await axios.get("http://localhost:8080/personas");
         setPersonas(personasAPI.data);

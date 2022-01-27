@@ -2,24 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-
-
-
-
-
-
 function PersonaForm(props){
 
     const [nombre,setNombre] = useState("");
     const [apellido,setApellido] = useState("");
     const [fechaNac,setFechaNac] = useState("");
-
     let navigate = useNavigate();
     
-
     useEffect(() => {
         if (props.id !== undefined){
-            console.log(props.id);
             axios.get("http://localhost:8080/personas/"+props.id)
                 .then(res => {
                     setNombre(res.data.nombre);
@@ -72,18 +63,12 @@ function PersonaForm(props){
                     <input type="date" class="form-control" value={fechaNac} onChange={e => setFechaNac(e.target.value)} id="fechaNac" required/>
                 </div>
                 <div className="d-flex justify-content-center">
-                    
                     <button type="submit" class="btn btn-success ">{props.id !== undefined ? <span>Actualizar</span> : <span>Agregar</span>}</button>
-
                 </div>
             </form>   
         </div>
                 
     )
-    
-
-
-
 }
 
 export default PersonaForm;
